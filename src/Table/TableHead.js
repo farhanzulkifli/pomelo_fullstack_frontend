@@ -5,6 +5,7 @@ const TableHead = ({ columns, handleSorting }) => {
   const [sortField, setSortField] = useState("");
   const [order, setOrder] = useState("asc");
 
+  // this functions toggles between ascending and descending, and sends the parameters to handleSorting to be sorted
   const handleSortingChange = (accessor) => {
     const sortOrder =
       accessor === sortField && order === "asc" ? "desc" : "asc";

@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment';
 
 const TableBody = ({ tableData, columns }) => {
+    //TableBody renders out the data into rows and columns
     return (
      <tbody>
       {tableData.map((data) => {
