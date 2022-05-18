@@ -6,10 +6,11 @@ import "./Table.css";
 
 const Table = () => {
   const [tableData, setTableData] = useState();
+  const url = `http://localhost:3000/transactions`
 
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
 
   //** Fetching the data and setting the data into the state */
   const getData = async () => {
@@ -18,14 +19,14 @@ const Table = () => {
   };
 
   const fetchData = async () => {
-    const response = await axios.get(`http://localhost:3000/transactions`);
+    const response = await axios.get(url);
     return response.data.transactions;
   };
 
   //** Posting a transaction */
   const clickHandler = async () => {
     axios
-      .post("http://localhost:3000/transactions", {
+      .post(url, {
         transactionId: 3,
         date: 1652690094,
         to: 180180180,
