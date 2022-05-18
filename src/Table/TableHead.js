@@ -1,15 +1,35 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
 
-const TableHead = ({ columns }) => {
-    return (
-     <thead>
+const TableHead = ({ columns, handleSorting }) => {
+  const [sortField, setSortField] = useState("");
+  const [order, setOrder] = useState("asc");
+
+  const handleSortingChange = (accessor) => {
+    const sortOrder =
+      accessor === sortField && order === "asc" ? "desc" : "asc";
+    setSortField(accessor);
+    setOrder(sortOrder);
+    handleSorting(accessor, sortOrder);
+    console.log(accessor, sortOrder);
+  };
+  return (
+    <thead>
       <tr>
-       {columns.map(({ label, accessor, sortable }) => {
-        return <th key={accessor}>{label}</th>;
-       })}
+        {columns.map(({ label, accessor, sortable }) => {
+          return (
+            <th
+              className="th"
+              key={accessor}
+              onClick={sortable ? () => handleSortingChange(accessor) : null}
+            >
+              {label}
+            </th>
+          );
+        })}
       </tr>
-     </thead>
-    );
-   };
+    </thead>
+  );
+};
 
-export default TableHead
+export default TableHead;

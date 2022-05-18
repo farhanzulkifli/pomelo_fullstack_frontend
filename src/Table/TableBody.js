@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment';
 
 const TableBody = ({ tableData, columns }) => {
     return (
@@ -8,6 +9,9 @@ const TableBody = ({ tableData, columns }) => {
         <tr key={data.transactionId}>
          {columns.map(({ accessor }) => {
           const tData = data[accessor] ? data[accessor] : "NA";
+          if (accessor === "date"){
+              return <td key={accessor}>{moment.unix(data[accessor]).format('LLL')}</td>;
+          } 
           return <td key={accessor}>{tData}</td>;
          })}
         </tr>
