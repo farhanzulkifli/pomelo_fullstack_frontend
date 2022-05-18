@@ -3,9 +3,10 @@ import TableBody from "./Table/TableBody";
 import TableHead from "./Table/TableHead";
 import axios from "axios";
 import "./Table.css";
+import { mockdata } from "./mockdata";
 
 const Table = () => {
-  const [tableData, setTableData] = useState();
+  const [tableData, setTableData] = useState(mockdata);
 
   useEffect(() => {
     getData();
@@ -15,6 +16,7 @@ const Table = () => {
   const getData = async () => {
     const dataFromServer = await fetchData();
     setTableData(dataFromServer);
+    console.log(mockdata)
   };
 
   const fetchData = async () => {
@@ -77,10 +79,10 @@ const Table = () => {
     <>
       <table className="table">
         <caption>Sortable Table</caption>
-        {tableData ? <TableHead {...{ columns, handleSorting }} /> : "loading"}
-        {tableData ? <TableBody {...{ columns, tableData }} /> : "loading"}
-        <button onClick={clickHandler}>Post</button>
+        {<TableHead {...{ columns, handleSorting }} />}
+        {<TableBody {...{ columns, tableData }} /> }
       </table>
+        <button onClick={clickHandler}>Post</button>
     </>
   );
 };
