@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import TableBody from "./TableBody";
-import TableHead from "./TableHead";
+import TableBody from "./Table/TableBody";
+import TableHead from "./Table/TableHead";
 import axios from "axios";
 import "../App.css";
 
